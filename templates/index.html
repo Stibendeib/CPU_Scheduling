@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPU Scheduling Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="topbar">
+      <div>
+        <p class="eyebrow">Operating Systems Lab</p>
+        <h1>CPU Scheduling Calculator</h1>
+      </div>
+      <div class="summary-strip" aria-live="polite">
+        <div>
+          <span>Average Waiting</span>
+          <strong id="avgWaiting">0</strong>
+        </div>
+        <div>
+          <span>Average Turnaround</span>
+          <strong id="avgTurnaround">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="control-panel">
+        <div class="field">
+          <label for="algorithm">Scheduling Algorithm</label>
+          <select id="algorithm">
+            <option value="FCFS">First Come, First Served</option>
+            <option value="NPP">Non-Preemptive Priority</option>
+            <option value="RR">Round Robin</option>
+            <option value="SJF">Shortest Job First</option>
+          </select>
+        </div>
+
+        <div class="field quantum-field hidden" id="quantumField">
+          <label for="quantum">Time Quantum</label>
+          <input id="quantum" type="number" value="2" min="0.1" step="0.1">
+        </div>
+
+        <div class="action-grid">
+          <button class="primary-button" id="calculateBtn" type="button">Calculate</button>
+          <button class="secondary-button" id="addProcessBtn" type="button">Add Process</button>
+          <button class="secondary-button" id="sampleBtn" type="button">Sample Data</button>
+          <button class="ghost-button" id="clearBtn" type="button">Clear</button>
+        </div>
+
+        <div class="note">
+          Lower priority numbers run first in Non-Preemptive Priority scheduling.
+        </div>
+      </aside>
+
+      <section class="main-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Input</p>
+            <h2>Processes</h2>
+          </div>
+        </div>
+
+        <div class="table-wrap input-wrap">
+          <table class="process-table">
+            <thead>
+              <tr>
+                <th>Process</th>
+                <th>Arrival</th>
+                <th>Burst</th>
+                <th class="priority-col">Priority</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="processBody"></tbody>
+          </table>
+        </div>
+
+        <p class="error-message" id="errorMessage" role="alert"></p>
+
+        <div class="section-header results-header">
+          <div>
+            <p class="eyebrow">Output</p>
+            <h2>Gantt Chart</h2>
+          </div>
+        </div>
+        <div class="gantt-shell">
+          <div id="ganttChart" class="gantt-chart empty-state">Run a schedule to see the execution order.</div>
+          <div id="ganttTimeline" class="gantt-timeline"></div>
+        </div>
+
+        <div class="section-header results-header">
+          <div>
+            <p class="eyebrow">Details</p>
+            <h2>Scheduling Table</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Process</th>
+                <th>Arrival Time</th>
+                <th>Burst Time</th>
+                <th class="priority-result-col">Priority</th>
+                <th>Starting Time</th>
+                <th>Waiting Time</th>
+                <th>Turnaround Time</th>
+              </tr>
+            </thead>
+            <tbody id="resultBody">
+              <tr>
+                <td colspan="7" class="empty-row">Results will appear here.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

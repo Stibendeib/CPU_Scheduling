@@ -1,0 +1,402 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --ink: #151923;
+  --muted: #657080;
+  --line: #dfe4ea;
+  --accent: #146c63;
+  --accent-dark: #0c4f49;
+  --accent-soft: #dff3ef;
+  --blue: #2d6cdf;
+  --red: #be3a34;
+  --shadow: 0 18px 45px rgba(21, 25, 35, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 42px;
+}
+
+.topbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.summary-strip div {
+  min-width: 150px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+}
+
+.summary-strip span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.summary-strip strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--accent-dark);
+  font-size: 1.5rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.control-panel,
+.main-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.control-panel {
+  position: sticky;
+  top: 18px;
+  padding: 18px;
+}
+
+.main-panel {
+  padding: 20px;
+  overflow: hidden;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+label {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 12px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.hidden {
+  display: none;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.primary-button {
+  grid-column: span 2;
+  background: var(--accent);
+  color: #fff;
+}
+
+.primary-button:hover {
+  background: var(--accent-dark);
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.ghost-button {
+  border: 1px solid transparent;
+  background: #f0f2f4;
+  color: var(--muted);
+}
+
+.ghost-button:hover {
+  color: var(--red);
+}
+
+.note {
+  margin-top: 16px;
+  border-left: 4px solid var(--accent);
+  background: #f3faf8;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.results-header {
+  margin-top: 26px;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+th {
+  background: #f1f4f6;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.process-table input {
+  min-width: 96px;
+}
+
+.remove-button {
+  width: 38px;
+  min-height: 38px;
+  background: #f8e7e5;
+  color: var(--red);
+}
+
+.remove-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.error-message {
+  min-height: 23px;
+  margin: 11px 0 0;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.gantt-shell {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  overflow-x: auto;
+}
+
+.gantt-chart {
+  display: flex;
+  min-height: 86px;
+  min-width: 520px;
+  align-items: stretch;
+}
+
+.gantt-block {
+  display: grid;
+  min-width: 58px;
+  place-items: center;
+  border-right: 2px solid #fff;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+}
+
+.gantt-block small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.gantt-block.idle {
+  background: #8a929c;
+}
+
+.gantt-timeline {
+  display: flex;
+  min-width: 520px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.time-cell {
+  position: relative;
+  min-width: 58px;
+  padding-top: 8px;
+}
+
+.time-label {
+  position: absolute;
+  top: 8px;
+  white-space: nowrap;
+}
+
+.time-start {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.time-start.first {
+  transform: none;
+}
+
+.time-end {
+  position: absolute;
+  right: 0;
+  transform: translateX(50%);
+}
+
+.empty-state,
+.empty-row {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 700;
+  text-align: center;
+}
+
+.priority-muted {
+  color: #9aa3ad;
+}
+
+@media (max-width: 860px) {
+  .topbar,
+  .workspace {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .control-panel {
+    position: static;
+  }
+
+  .summary-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 18px;
+  }
+
+  .main-panel,
+  .control-panel {
+    padding: 14px;
+  }
+
+  .summary-strip,
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-button {
+    grid-column: auto;
+  }
+}
